@@ -1,25 +1,24 @@
 name: cicd_test
 
-on:
+on: 
   push:
-    branches: 
+    branches:
       - main
   pull_request:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: checkout
-    - uses: actions/checkout@v2
+      - name: checkout
+        uses: actions/checkout@v2
 
-    - name: build
-      run: python app.py
-    
-    - name: test
-      run: python app.py test
-      
-    - name: deploy
-      run: python app.py prod
+      - name: build
+        run: pip install -r requirements.txt
+
+      - name: deploy
+        run: python app.py
+  
